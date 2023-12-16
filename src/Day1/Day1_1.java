@@ -35,7 +35,7 @@ public class Day1_1 {
 
                 line = input.readLine();
             }
-            System.out.println(total);
+            System.out.println("1.1: " + total);
             input.close();
         } catch (Exception e) {
             e.printStackTrace();
