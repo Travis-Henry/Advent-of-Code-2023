@@ -1,12 +1,11 @@
-package Day1;
+package days.Day1;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import utilities.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day1_2 {
+
     // This method turns any number word to a number char
     private static char parseString(String num, boolean first) {
         switch (num) {
@@ -71,25 +70,17 @@ public class Day1_2 {
     public static void start() {
 
         // Get file
-        File file = new File("src\\Day1\\input1.txt");
-        if (!file.exists()) {
-            System.out.println("The file does not exist");
-        }
-        try {
-            BufferedReader input = new BufferedReader(new FileReader(file));
+        FileLoader input = new FileLoader("Day1\\input1.txt");
 
-            // Read the file line by line
-            String line = input.readLine();
-            int total = 0;
-            while (line != null) {
-                total += calibValue(line);
+        // Read the file line by line
+        String line = input.getNextLine();
+        int total = 0;
+        while (line != null) {
+            total += calibValue(line);
 
-                line = input.readLine();
-            }
-            System.out.println("1.2: " + total);
-            input.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            line = input.getNextLine();
         }
+        System.out.println("1.2: " + total);
+        input.close();
     }
 }

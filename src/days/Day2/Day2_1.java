@@ -1,14 +1,12 @@
-package Day2;
+package days.Day2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import utilities.*;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Day2_1 {
+
     private static boolean possible(int red, int green, int blue, HashMap<String, Integer> cubes) {
         return (cubes.get("red") <= red && cubes.get("green") <= green && cubes.get("blue") <= blue);
     }
@@ -34,31 +32,23 @@ public class Day2_1 {
     }
 
     public static void start() {
-        File file = new File("src\\Day2\\input.txt");
-        if (!file.exists()) {
-            System.out.println("File does not exist");
+        FileLoader input = new FileLoader("Day2\\input.txt");
+
+        // loop reads one line at a time
+        String line = input.getNextLine();
+        int i = 1; // keeps track of game number
+        int total = 0;
+        HashMap<String, Integer> cubes = new HashMap<String, Integer>();
+        while (line != null) {
+
+            populateMap(line, cubes);
+            total += (possible(12, 13, 14, cubes)) ? i : 0;
+
+            line = input.getNextLine();
+            i++;
+            cubes.clear(); // reset cube map for next line
         }
-        try {
-            BufferedReader input = new BufferedReader(new FileReader(file));
-
-            // loop reads one line at a time
-            String line = input.readLine();
-            int i = 1; // keeps track of game number
-            int total = 0;
-            HashMap<String, Integer> cubes = new HashMap<String, Integer>();
-            while (line != null) {
-
-                populateMap(line, cubes);
-                total += (possible(12, 13, 14, cubes)) ? i : 0;
-
-                line = input.readLine();
-                i++;
-                cubes.clear(); // reset cube map for next line
-            }
-            System.out.println(total);
-            input.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(total);
+        input.close();
     }
 }

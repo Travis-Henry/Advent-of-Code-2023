@@ -1,3 +1,5 @@
+package utilities;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -8,7 +10,7 @@ public class FileLoader {
     private BufferedReader input;
 
     public FileLoader(String path) {
-        file = new File("src\\" + path);
+        file = new File("src\\days\\" + path);
         if (!file.exists()) {
             System.out.println("File with the path: " + path + " does not exist");
         } else {

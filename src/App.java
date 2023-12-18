@@ -1,5 +1,6 @@
-import Day1.*;
-import Day2.*;
+import days.Day1.*;
+import days.Day2.*;
+import days.Day3.*;
 
 import java.util.Scanner;
 
@@ -24,6 +25,9 @@ public class App {
                 case "2":
                     Day2_1.start();
                     Day2_2.start();
+                    break;
+                case "3":
+                    Day3_1.start();
                     break;
                 case "-1":
                     System.out.println("Goodbye!");
