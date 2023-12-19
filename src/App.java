@@ -28,6 +28,7 @@ public class App {
                     break;
                 case "3":
                     Day3_1.start();
+                    Day3_2.start();
                     break;
                 case "-1":
                     System.out.println("Goodbye!");
